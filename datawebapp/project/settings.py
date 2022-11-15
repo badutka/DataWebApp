@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -27,22 +26,21 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
-    'webapp.apps.WebappConfig',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'crispy_forms',
-    'crispy_bootstrap5',
+    # created apps
+    'users.apps.UsersConfig',  # new
+    'webapp.apps.WebappConfig',  # new
+    # 3rd party
+    'crispy_forms',  # new
+    'crispy_bootstrap5',  # new
 ]
 
 MIDDLEWARE = [
@@ -75,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -85,7 +82,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -105,7 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -117,7 +112,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -128,4 +122,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# https://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
+
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# https://docs.djangoproject.com/en/4.1/ref/settings/#login-redirect-url
+
+LOGIN_REDIRECT_URL = 'webapp:webapp-home'
+
+# https://docs.djangoproject.com/en/4.1/topics/http/sessions/#browser-length-sessions-vs-persistent-sessions
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
