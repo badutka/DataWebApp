@@ -17,9 +17,9 @@ def save_profile(sender, instance, **kwargs):
 
 
 @receiver(user_logged_in)
-def update_status_on_login(sender, instance, **kwargs):
-    instance.profile.status = True
-    instance.profile.save()
+def update_status_on_login(sender, user, **kwargs):
+    user.profile.status = True
+    user.profile.save()
 
 
 @receiver(user_logged_out)
