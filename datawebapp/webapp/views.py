@@ -10,9 +10,3 @@ def about(request):
     context = {'title': 'about', 'nbar': 'about'}
     # data view, edit and automation tool DVEAT
     return render(request, 'webapp/about.html', context=context)
-
-
-@login_required
-def data_summary(request):
-    context = {'title': 'Data Summary', 'nbar': 'data_summary'}
-    return render(request, 'webapp/data_summary.html', context=context)

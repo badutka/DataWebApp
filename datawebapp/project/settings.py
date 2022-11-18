@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # created apps
+    'datasummary.apps.DatasummaryConfig',
     'users.apps.UsersConfig',  # new
     'webapp.apps.WebappConfig',  # new
     # 3rd party
