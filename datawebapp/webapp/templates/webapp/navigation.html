@@ -14,8 +14,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav me-auto">
-                    <a class="nav-item nav-link" href="{% url 'webapp:webapp-home' %}">Home</a>
-                    <a class="nav-item nav-link" href="{% url 'webapp:webapp-about' %}">About</a>
+                    <a class="nav-item nav-link {% if nbar == 'home' %}active{% endif %}" href="{% url 'webapp:webapp-home' %}">Home</a>
+                    <a class="nav-item nav-link {% if nbar == 'about' %}active{% endif %}" href="{% url 'webapp:webapp-about' %}">About</a>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {% if nbar == 'data_summary' or nbar == '' or nbar == '' %}active{% endif %}" id="NavbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item {% if nbar == 'data_summary' %}active{% endif %}" href="{% url 'webapp:webapp-data_summary' %}">Data Summary</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Actions</a>
+                    {% endif %}
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
