@@ -1,4 +1,38 @@
 {% extends "webapp/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
     <h1>summary page</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Upload Your Data</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Upload</button>
+        </div>
+    </form>
+
+    <div class="bg-white border rounded-5 border-top pt-2 mt-3 summary-data-table">
+      <section class="w-100 p-4 justify-content-center pb-4 p-4 text-center">
+            <section>
+                <div class="table-responsive text-nowrap">
+                    {% include 'datasummary/data_table.html' with data=df %}
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <div class="bg-white border rounded-5 border-top pt-2 mt-3 summary-data-table">
+      <section class="w-100 p-4 justify-content-center pb-4 p-4 text-center">
+            <section>
+                <div class="table-responsive text-nowrap">
+                    {% include 'datasummary/data_table.html' with data=df_head %}
+                </div>
+            </section>
+        </section>
+    </div>
+
+
 {% endblock content %}
