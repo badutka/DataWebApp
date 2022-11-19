@@ -1,34 +1,32 @@
-<table id="SummaryDataTable" class="display" style="width:100%">
-
-    <thead>
-    <tr>
-        {% for col in data.columns %}
-        <th class="th-sm">
-            {{col}}
-        </th>
-        {% endfor %}
-    </tr>
-    </thead>
-
-    <tbody>
-    {% for index, row in data.iterrows %}
-    <tr>
-        {% for cell in row %}
-        <td>
-            {{cell}}
-        </td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-    </tbody>
-
-</table>
-
-<script>
-$(document).ready(function () {
-  $('#SummaryDataTable').DataTable();
-  $('.dataTables_length').addClass('bs-select');
-});
-
-
-</script>
+{% if data|length %}
+<div class="bg-white border rounded-5 border-top pt-2 mt-3 summary-data-table">
+    <section class="w-100 p-4 justify-content-center pb-4 p-4 text-center">
+        <section>
+            <div class="table-responsive text-nowrap">
+                <table id="{{ tableid }}" class="display cell-border dt-body-left" style="width:100%">
+                    <thead>
+                    <tr>
+                        {% for col in data.columns %}
+                        <th class="th-sm">
+                            {{col}}
+                        </th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for index, row in data.iterrows %}
+                    <tr>
+                        {% for cell in row %}
+                        <td>
+                            {{cell}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </section>
+</div>
+{% endif %}
