@@ -94,9 +94,29 @@ a.article-title:hover {
   z-index: 1;
 }
 
-.summary-data-table{
-  box-shadow: 3px 3px 20px rgba(255, 255, 255, 0.5);
+.summary-data-table-title{
+  background: white;
+  text-align: center;
+  font-size: 20px;
   border-radius: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: 3px 3px 20px rgba(255, 255, 255, 0.5);
+}
+
+.summary-data-table{
+  border-radius: 3px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  box-shadow: 3px 3px 20px rgba(255, 255, 255, 0.5);
+}
+
+.summary-data-table {
+  text-align: left;
+}
+
+th{
+  text-align: center !important;
 }
 
 table.dataTable thead .sorting:after,

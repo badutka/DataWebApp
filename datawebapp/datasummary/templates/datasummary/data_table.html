@@ -1,32 +1,46 @@
 {% if data|length %}
-<div class="bg-white border rounded-5 border-top pt-2 mt-3 summary-data-table">
-    <section class="w-100 p-4 justify-content-center pb-4 p-4 text-center">
-        <section>
-            <div class="table-responsive text-nowrap">
-                <table id="{{ tableid }}" class="display cell-border dt-body-left" style="width:100%">
-                    <thead>
-                    <tr>
-                        {% for col in data.columns %}
-                        <th class="th-sm">
-                            {{col}}
-                        </th>
-                        {% endfor %}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for index, row in data.iterrows %}
-                    <tr>
-                        {% for cell in row %}
-                        <td>
-                            {{cell}}
-                        </td>
-                        {% endfor %}
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </section>
+<div class="border-top pt-3 mt-5 {{ toggler_class }}">
+    {% if data|length > 100 %}
+    <div class="alert alert-danger" role="alert">
+        Unable to load full dataset table.<br>
+        The uploaded dataset has too many rows to be loaded on page in full table.
+    </div>
+    {% else %}
+    <div class="summary-data-table-wrapper">
+        <div class="summary-data-table-title">
+            {{ table_title }}
+        </div>
+        <div class="bg-white border rounded-5 summary-data-table">
+            <section class="w-100 p-4 justify-content-center pb-4 p-4">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table id="{{ tableid }}" class="display cell-border" style="width:100%">
+                            <thead>
+                            <tr>
+                                {% for col in data.columns %}
+                                <th class="th-sm">
+                                    {{col}}
+                                </th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for index, row in data.iterrows %}
+                            <tr>
+                                {% for cell in row %}
+                                <td>
+                                    {{cell}}
+                                </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endif %}

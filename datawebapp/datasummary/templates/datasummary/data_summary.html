@@ -11,10 +11,14 @@
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Upload</button>
+            {% if df|length %}
+                <button type="button" class="btn btn-outline-primary show-full-data-table">show full table</button>
+            {% endif %}
         </div>
     </form>
 
-    {% include 'datasummary/data_table.html' with data=df_head tableid='SummaryDataTableHead'%}
-    {% include 'datasummary/data_table.html' with data=df_head tableid='SummaryDataTable'%}
+    {% include 'datasummary/data_table.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset'%}
+
+    {% include 'datasummary/data_table.html' with data=df tableid='summaryDataTable' table_title='Detailed table view of the Dataset' toggler_class='summary-data-table-toggler'%}
 
 {% endblock content %}
