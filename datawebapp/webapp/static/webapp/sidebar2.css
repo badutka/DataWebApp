@@ -6,8 +6,10 @@
 
 
 #content > nav.navbar {
-    padding: 15px 10px;
-    background: #fff;
+    padding: 1px 10px;
+    padding-left: 0px;
+    padding-top: 3px;
+    background: #282e35;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
@@ -188,6 +190,9 @@ a.article:hover {
 #content {
     width: 100%;
     padding: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
     min-height: 100vh;
     transition: all 0.3s;
 }
@@ -197,6 +202,8 @@ a.article:hover {
     height: 40px;
     background: #f5f5f5;
     cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 #sidebarCollapse span {
