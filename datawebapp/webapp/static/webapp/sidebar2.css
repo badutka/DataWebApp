@@ -48,14 +48,20 @@ span {
 
 .wrapper {
     display: flex;
-    align-items: stretch;
+    /* align-items: stretch; */
     margin-top: 56px;
 }
 
 #sidebar {
     top: 56px;
+    left: 0;
+    position: fixed;
+    height: 100vh;
+    z-index: 999;
+
     min-width: 250px;
     max-width: 250px;
+
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
@@ -188,13 +194,20 @@ a.article:hover {
 ----------------------------------------------------- */
 
 #content {
-    width: 100%;
+    /* width: 100%; */
+    width: calc(100% - 250px);
     padding: 20px;
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
+    position: absolute;
     min-height: 100vh;
     transition: all 0.3s;
+    right: 0;
+}
+
+#content.active {
+    width: calc(100% - 80px);
 }
 
 #sidebarCollapse {
@@ -267,5 +280,11 @@ a.article:hover {
     }
     #sidebarCollapse.active span:last-of-type {
         transform: rotate(-45deg) translate(1px, -1px);
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 80px);
     }
 }

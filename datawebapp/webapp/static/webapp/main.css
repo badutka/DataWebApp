@@ -93,28 +93,3 @@ a.article-title:hover {
   width: 100%;
   z-index: 1;
 }
-
-@media (min-width: 768px) {
-  .container{
-    max-width: 462px !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .container{
-    max-width: 684px !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container{
-    max-width: 892px !important;
-  }
-}
-
-@media (min-width: 1400px) {
-  .container{
-    max-width: 1140px !important;
-    /* max-width: calc(100% - 250px) !important; */
-  }
-}
