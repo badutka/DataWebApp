@@ -1,6 +1,7 @@
 body {
-  background: #fafafa;
-  color: #333333;
+  /* background: #fafafa; */
+  background: #030c14 !important;
+  color: #333333 !important;
   margin-top: 5rem;
 }
 
@@ -13,7 +14,8 @@ ul {
 }
 
 .bg-steel {
-  background-color: #5f788a;
+  /* background-color: #5f788a; */
+  background-color: #20272e;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -90,4 +92,8 @@ a.article-title:hover {
   height: 3px;
   width: 100%;
   z-index: 1;
+}
+
+#content > .container {
+  margin-top: 50px;
 }
