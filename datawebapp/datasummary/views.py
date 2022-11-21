@@ -13,7 +13,7 @@ def data_summary(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             print(request.FILES['file'])
-            df, df_head= handle_file(request.FILES['file'], request)
+            df, df_head = handle_file(request.FILES['file'], request)
             context.update({'df': df, 'df_head': df_head})
     else:
         form = UploadFileForm()
