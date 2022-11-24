@@ -1,3 +1,7 @@
+/* ---------------------------------------------------
+    MAIN CSS STYLES
+----------------------------------------------------- */
+
 body {
   /* background: #fafafa; */
   background: #030c14 !important;
@@ -18,6 +22,18 @@ body {
   margin-top: 50px;
 }
 
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    SHOW/HIDE BUTTONS
+----------------------------------------------------- */
+
 .show-hide-button-1{
   margin-left: 10px;
   box-shadow: none !important;
@@ -32,3 +48,7 @@ body {
   box-shadow: 2px 2px 5px 1px rgb(0 123 255 / 50%) !important;
   /* box-shadow: none !important; */
 }
+
+/* ---------------------------------------------------
+    ...
+----------------------------------------------------- */
