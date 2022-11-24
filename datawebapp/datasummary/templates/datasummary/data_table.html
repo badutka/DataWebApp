@@ -1,8 +1,11 @@
 {% if data|length %}
 <div class="border-top pt-3 mt-5 {{ toggler_class }}">
-    {% if data|length > 100 %}
+    {% if data|length > 70 %}
+
     <div class="alert alert-danger" role="alert">
-        Unable to load full dataset table.<br>
+        <div align="center">
+            <h6 class="table-loading-error-bar">Unable to load full dataset table.</h6>
+        </div>
         The uploaded dataset has too many rows to be loaded on page in full table.
     </div>
     {% else %}
