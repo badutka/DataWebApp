@@ -1,0 +1,13 @@
+.navbar-background {
+    /* background-color: #5f788a; */
+    background-color: #20272e;
+}
+
+.site-header .navbar-nav .nav-link {
+color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link.active {
+font-weight: 500;
+}
+  
