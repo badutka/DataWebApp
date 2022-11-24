@@ -3,7 +3,11 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import UploadFileForm
 from django.contrib import messages
+
 import pandas as pd
+from collections import namedtuple
+
+from mlengine.data_manager.file_reader import get_df_details
 
 
 @login_required
@@ -12,9 +16,15 @@ def data_summary(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            print(request.FILES['file'])
-            df, df_head = handle_file(request.FILES['file'], request)
-            context.update({'df': df, 'df_head': df_head})
+            file = request.FILES['file']
+            df, df_head = handle_file(file, request)
+            df_details = namedtuple('df_details',
+                                    'col_count, dtypes, non_null_counts, dtype_counts, memory_usage_string')
+            (col_count, dtypes, non_null_counts, dtype_counts, memory_usage_string) = get_df_details(df)
+            # noinspection PyTypeChecker,PyUnresolvedReferences
+            df_details = df_details(col_count, zip(dtypes.index, dtypes.values, non_null_counts.values), zip(non_null_counts.index, non_null_counts.values), dtype_counts, memory_usage_string)
+
+            context.update({'df': df, 'df_head': df_head, 'df_details': df_details})
     else:
         form = UploadFileForm()
     context.update({'form': form})

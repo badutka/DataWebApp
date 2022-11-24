@@ -9,10 +9,15 @@
             <legend class="border-bottom mb-4">Upload Your Data</legend>
             {{ form|crispy }}
         </fieldset>
-        <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Upload</button>
+        <div class="form-group" style="display: flex;">
+            <button class="btn btn-info bi bi-upload" type="submit">Upload</button>
             {% if df|length %}
-                <button type="button" class="btn btn-outline-primary show-full-data-table">show full table</button>
+                <button type="button" class="btn btn-primary show-full-data-table show-hide-button-1" data-bs-toggle="button">show full table</button>
+<!--                <div class="btn-group-toggle" data-toggle="buttons">-->
+<!--                  <label class="btn btn-secondary show-full-data-table">-->
+<!--                    <input type="checkbox" checked autocomplete="off"> Checked-->
+<!--                  </label>-->
+<!--                </div>-->
             {% endif %}
         </div>
     </form>
@@ -20,5 +25,37 @@
     {% include 'datasummary/data_table.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset'%}
 
     {% include 'datasummary/data_table.html' with data=df tableid='summaryDataTable' table_title='Detailed table view of the Dataset' toggler_class='summary-data-table-toggler'%}
+
+    {{ df_details.col_count }}
+    <div class="row">
+        <table class="table table-bordered table-striped table-dark" style="max-width: 400px;">
+            <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Column Name</th>
+                  <th scope="col">Column Type</th>
+                  <th scope="col">Non Null Counts</th>
+                </tr>
+              </thead>
+            <tbody>
+            {% for row in df_details.dtypes %}
+            <tr>
+                <td class="text-center">
+                    {{ forloop.counter }}
+                </td>
+                {% for cell in row %}
+                <td>
+                    {{cell}}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    {{ df_details.dtype_counts }}
+    {{ df_details.memory_usage_string }}
 
 {% endblock content %}
