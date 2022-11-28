@@ -1,0 +1,48 @@
+{% if data_length %}
+<div class="border-top pt-2 mt-2 {{ toggler_class }}">
+    {% if data_length > 100 %}
+    <div align="center">
+        <h6 class="table-loading-error-bar">Unable to load full dataset table.</h6>
+    </div>
+    <div class="alert alert-danger" role="alert">
+        The uploaded dataset has too many rows to be loaded on page in full table.
+    </div>
+    {% else %}
+    <div class="summary-data-table-wrapper">
+        <div class="summary-data-table-title">
+            {{ table_title }}
+        </div>
+        <div class="bg-white border rounded-5 summary-data-table">
+            <section class="w-100 p-4 justify-content-center pb-4 p-4">
+                <section>
+                    <div class="table-responsive text-nowrap">
+                        <table id="{{ tableid }}" class="display cell-border" style="width:100%">
+                            <thead>
+                            <tr>
+                                {% for col in data.columns %}
+                                <th class="th-sm">
+                                    {{col}}
+                                </th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for index, row in data.iterrows %}
+                            <tr>
+                                {% for cell in row %}
+                                <td>
+                                    {{cell}}
+                                </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endif %}

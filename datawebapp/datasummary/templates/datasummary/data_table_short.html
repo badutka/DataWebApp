@@ -1,20 +1,20 @@
-{% if data|length %}
-<div class="border-top pt-3 mt-5 {{ toggler_class }}">
-    {% if data|length > 70 %}
-
-    <div class="alert alert-danger" role="alert">
-        <div align="center">
-            <h6 class="table-loading-error-bar">Unable to load full dataset table.</h6>
-        </div>
-        The uploaded dataset has too many rows to be loaded on page in full table.
-    </div>
-    {% else %}
+{% if data_length %}
+<div class="border-top pt-2 mt-2 {{ toggler_class }}">
     <div class="summary-data-table-wrapper">
         <div class="summary-data-table-title">
             {{ table_title }}
         </div>
         <div class="bg-white border rounded-5 summary-data-table">
             <section class="w-100 p-4 justify-content-center pb-4 p-4">
+                <div style="overflow: hidden;">
+                    <span title="Column Count: {{ column_details.col_count }}." class="badge bg-secondary">Columns count: {{ column_details.col_count }}</span>
+                    <span title="Rows Count: {{ data_length }}." class="badge bg-secondary">Rows Count: {{ data_length }}</span>
+                    <span title="Memory Usage: {{ column_details.memuse }}." class="badge bg-secondary">Memory Usage: {{ column_details.memuse }}</span>
+                    <span class="badge rounded-pill bg-light text-dark">Types:</span>
+                    {% for idx, item in column_details.dtype_counts %}
+                        <span title="Type: {{ idx }}." class="badge bg-secondary">{{ idx }}: {{ item }}</span>
+                    {% endfor %}
+                </div>
                 <section>
                     <div class="table-responsive text-nowrap">
                         <table id="{{ tableid }}" class="display cell-border" style="width:100%">
@@ -44,6 +44,5 @@
             </section>
         </div>
     </div>
-    {% endif %}
 </div>
 {% endif %}

@@ -13,32 +13,27 @@
             <button class="btn btn-info bi bi-upload" type="submit">Upload</button>
             {% if df|length %}
                 <button type="button" class="btn btn-primary show-full-data-table show-hide-button-1" data-bs-toggle="button">show full table</button>
-<!--                <div class="btn-group-toggle" data-toggle="buttons">-->
-<!--                  <label class="btn btn-secondary show-full-data-table">-->
-<!--                    <input type="checkbox" checked autocomplete="off"> Checked-->
-<!--                  </label>-->
-<!--                </div>-->
             {% endif %}
         </div>
     </form>
 
-    {% include 'datasummary/data_table.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset'%}
+    {% include 'datasummary/data_table_short.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset' column_details=column_details data_length=df_head|length%}
 
-    {% include 'datasummary/data_table.html' with data=df tableid='summaryDataTable' table_title='Detailed table view of the Dataset' toggler_class='summary-data-table-toggler'%}
+    {% include 'datasummary/data_table_detailed.html' with data=df tableid='summaryDataTable' table_title='Detailed table view of the Dataset' toggler_class='summary-data-table-toggler' data_length=df|length%}
 
-    {{ df_details.col_count }}
-    <div class="row">
+<div class="row">
+    <div class="table-responsive border-top pt-3 mt-5 col-md-6">
         <table class="table table-bordered table-striped table-dark" style="max-width: 400px;">
             <thead class="thead-dark">
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Column Name</th>
-                  <th scope="col">Column Type</th>
-                  <th scope="col">Non Null Counts</th>
+                    <th scope="col" class="align-middle">#</th>
+                    <th scope="col">Column Name</th>
+                    <th scope="col">Column Type</th>
+                    <th scope="col">Non Null Counts</th>
                 </tr>
               </thead>
             <tbody>
-            {% for row in df_details.dtypes %}
+            {% for row in df_details %}
             <tr>
                 <td class="text-center">
                     {{ forloop.counter }}
@@ -52,10 +47,18 @@
             {% endfor %}
             </tbody>
         </table>
-
     </div>
 
-    {{ df_details.dtype_counts }}
-    {{ df_details.memory_usage_string }}
+    <div class="border-top pt-3 mt-5 col-md-6">
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+    </div>
+
+</div>
+
 
 {% endblock content %}
