@@ -1,3 +1,8 @@
+:root {
+  --summary-info-border-color: #a8a6a6;   /* #238636 # */
+  --summary-info-color: #a8a6a6;   /* #3fb950 # */
+}
+
 .summary-data-table-title{
     background: white;
     text-align: center;
@@ -50,3 +55,20 @@ table.dataTable thead .sorting_desc_disabled:before {
   text-align: center; 
   max-width: 400px;
 }
+
+.row{
+  margin-left: 0px !important;
+} 
+
+.green-info-label{
+  border: 1px solid;
+  /* border-radius: 2em; */
+  border-color: var(--summary-info-border-color);
+  color: var(--summary-info-color);
+  overflow: hidden; 
+  white-space: nowrap;
+  /* padding: 0.12em 0.5em; */
+  /* padding-right: 8px; */
+  /* padding-left: 8px; */
+}
+
