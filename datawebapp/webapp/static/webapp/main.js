@@ -14,7 +14,11 @@ $('#sidebarCollapse').on('click', function () {
     $(this).toggleClass('active');
 });
 
-$('#summaryDataTable').DataTable({});
+$('#summaryDataTable').DataTable({
+                                  scrollY: '200px',
+                                  scrollCollapse: true,
+                                  fixedHeader: true
+                                });
 $('#summaryDataTableHead').DataTable({
                                         searching:false,
                                         paging:false
