@@ -38,6 +38,15 @@
                             </tr>
                             {% endfor %}
                             </tbody>
+                            <tfoot>
+                            {% for row in df_details.values %}
+                                <tr>
+                                    {% for cell in row %}
+                                    <td>{{ cell }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                            </tfoot>
                         </table>
                     </div>
                 </section>

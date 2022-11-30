@@ -17,48 +17,8 @@
         </div>
     </form>
 
-    {% include 'datasummary/data_table_short.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset' column_details=column_details data_length=df_head|length%}
+    {% include 'datasummary/data_table_short.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset' column_details=column_details data_length=df_head|length df_details=df_details%}
 
     {% include 'datasummary/data_table_detailed.html' with data=df tableid='summaryDataTable' table_title='Detailed table view of the Dataset' toggler_class='summary-data-table-toggler' data_length=df|length%}
-
-<div class="row">
-    <div class="table-responsive border-top pt-3 mt-5 col-md-6">
-        <table class="table table-bordered table-striped table-dark" style="max-width: 400px;">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col" class="align-middle">#</th>
-                    <th scope="col">Column Name</th>
-                    <th scope="col">Column Type</th>
-                    <th scope="col">Non Null Counts</th>
-                </tr>
-              </thead>
-            <tbody>
-            {% for row in df_details %}
-            <tr>
-                <td class="text-center">
-                    {{ forloop.counter }}
-                </td>
-                {% for cell in row %}
-                <td>
-                    {{cell}}
-                </td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="border-top pt-3 mt-5 col-md-6">
-        <div>
-        </div>
-        <div>
-        </div>
-        <div>
-        </div>
-    </div>
-
-</div>
-
 
 {% endblock content %}
