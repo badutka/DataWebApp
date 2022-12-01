@@ -13,11 +13,12 @@
             <button class="btn btn-info bi bi-upload" type="submit">Upload</button>
             {% if df|length %}
                 <button type="button" class="btn btn-primary show-full-data-table show-hide-button-1" data-bs-toggle="button">show full table</button>
+                <button type="button" class="btn btn-primary show-simple-histograms show-hide-button-1" data-bs-toggle="button">show simple histograms</button>
             {% endif %}
         </div>
     </form>
 
-    {% include 'datasummary/data_table_short.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset' column_details=column_details data_length=df_head|length df_details=df_details%}
+    {% include 'datasummary/data_table_short.html' with data=df_head tableid='summaryDataTableHead' table_title='Head of the Dataset' column_details=column_details data_length=df_head|length df_details=df_details plot_div=plot_div toggler_class='simple-histograms-toggler'%}
 
     {% include 'datasummary/data_table_detailed.html' with data=df tableid='summaryDataTable' table_title='Detailed table view of the Dataset' toggler_class='summary-data-table-toggler' data_length=df|length%}
 

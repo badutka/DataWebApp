@@ -1,4 +1,6 @@
 $(".summary-data-table-toggler").hide();
+$(".simple-histograms-toggler").hide();
+
 
 // initialize tooltips
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -15,7 +17,7 @@ $('#sidebarCollapse').on('click', function () {
 });
 
 $('#summaryDataTable').DataTable({
-                                  scrollY: '200px',
+                                  scrollY: '420px',
                                   scrollCollapse: true,
                                   fixedHeader: true
                                 });
@@ -27,5 +29,9 @@ $('.dataTables_length').addClass('bs-select');
 
 $(".show-full-data-table").click(function(){
     $(".summary-data-table-toggler").toggle();
+});
+
+$(".show-simple-histograms").click(function(){
+  $(".simple-histograms-toggler").toggle();
 });
 });

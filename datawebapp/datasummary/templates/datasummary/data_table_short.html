@@ -1,5 +1,5 @@
 {% if data_length %}
-<div class="border-top pt-2 mt-2 {{ toggler_class }}">
+<div class="border-top pt-2 mt-2">
     <div class="summary-data-table-wrapper">
         <div class="summary-data-table-title">
             {{ table_title }}
@@ -19,6 +19,15 @@
                     <div class="table-responsive text-nowrap">
                         <table id="{{ tableid }}" class="display cell-border" style="width:100%">
                             <thead>
+                            <tr class="{{ toggler_class }}">
+                                {% for plot in plot_div %}
+                                <th>
+                                    {% autoescape off %}
+                                        {{ plot }}
+                                    {% endautoescape %}
+                                </th>
+                                {% endfor %}
+                            </tr>
                             <tr>
                                 {% for col in data.columns %}
                                 <th class="th-sm">
@@ -26,6 +35,7 @@
                                 </th>
                                 {% endfor %}
                             </tr>
+
                             </thead>
                             <tbody>
                             {% for index, row in data.iterrows %}

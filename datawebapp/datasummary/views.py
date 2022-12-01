@@ -8,6 +8,7 @@ import pandas as pd
 from collections import namedtuple
 
 from mlengine.data_manager.file_reader import get_df_details
+from mlengine.graphs.histogram_plots.feature_histograms import feature_desc_hist_array
 
 
 @login_required
@@ -26,8 +27,12 @@ def data_summary(request):
             df_details = {'index': dtypes.index, 'dtypes': dtypes.values, 'non_nulls': non_null_counts.values}
             # df_details = zip(dtypes.index, dtypes.values, non_null_counts.values)
             # noinspection PyTypeChecker,PyUnresolvedReferences
-            column_details = {'col_count': col_count, 'dtype_counts': zip(dtype_counts.index, dtype_counts.values), 'memuse':  memory_usage_string}
+            column_details = {'col_count': col_count, 'dtype_counts': zip(dtype_counts.index, dtype_counts.values),
+                              'memuse': memory_usage_string}
             context.update({'df': df, 'df_head': df_head, 'df_details': df_details, 'column_details': column_details})
+
+            plot_div = feature_desc_hist_array(df=df)
+            context.update({'plot_div': plot_div})
     else:
         form = UploadFileForm()
     context.update({'form': form})
